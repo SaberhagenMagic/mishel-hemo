@@ -7,11 +7,13 @@ import { MaterialModule } from "./material.module";
 // Componets
 import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent
+    LogInComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

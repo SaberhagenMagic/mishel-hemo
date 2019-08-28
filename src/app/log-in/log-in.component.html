@@ -12,6 +12,9 @@
                 <mat-error *ngIf="frmUser.controls['emailControl'].errors?.required">
                   El correo es <strong>requerido</strong>
                 </mat-error>
+                <mat-error *ngIf="frmUser.controls['emailControl'].errors?.pattern">
+                    Correo <strong>invalido</strong>
+                  </mat-error>
               </mat-form-field>
 
               <mat-form-field>
@@ -23,9 +26,9 @@
                 </button>
                 <mat-error *ngIf="frmUser.controls['passControl'].errors?.required">
                     La constraseña es <strong>requerida</strong>
-                  </mat-error>
+                </mat-error>
               </mat-form-field>
-
+              <!-- [disabled]="!frmUser.valid" -->
               <button mat-button color=primary type="submit">Entrar</button>
             </div>
           </form>
