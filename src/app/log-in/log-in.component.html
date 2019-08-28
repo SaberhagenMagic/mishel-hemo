@@ -1,3 +1,37 @@
-<mat-card>
-    Hola
-</mat-card>
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile colspan="4" rowspan="1"></mat-grid-tile> 
+    <mat-grid-tile colspan="1" rowspan="2"></mat-grid-tile>
+    <mat-grid-tile colspan="2" rowspan="2">
+
+        <form class="login-form" [formGroup]="frmUser" (ngSubmit)="entrar()">
+            <div class="form-content">
+
+              <mat-form-field>
+                <input matInput placeholder="correo" formControlName="emailControl" required>
+                <mat-icon matSuffix class="far fa-envelope form-icon"></mat-icon>
+                <mat-error *ngIf="frmUser.controls['emailControl'].errors?.required">
+                  El correo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="contraseña" formControlName="passControl" required [type]="hide ? 'password' : 'text'" >
+                <button mat-icon-button matSuffix (click)="hide = !hide" 
+                        [attr.aria-label]="'Oculpar contraseña'" 
+                        [attr.aria-pressend]="hide">
+                        <mat-icon class="far {{ hide ? 'fa-eye' : 'fa-eye-slash' }} form-icon"></mat-icon>
+                </button>
+                <mat-error *ngIf="frmUser.controls['passControl'].errors?.required">
+                    La constraseña es <strong>requerida</strong>
+                  </mat-error>
+              </mat-form-field>
+
+              <button mat-button color=primary type="submit">Entrar</button>
+            </div>
+          </form>
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="2"></mat-grid-tile>
+    <mat-grid-tile colspan="4"></mat-grid-tile>
+</mat-grid-list>
+{{ frmUser.valid }}

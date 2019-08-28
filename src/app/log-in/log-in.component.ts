@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  frmUser: FormGroup;
+  hide = true;
 
-  ngOnInit() {
+  constructor() {
+    this.frmUser = new FormGroup({
+      'emailControl': new FormControl('',[Validators.required, 
+                                      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+      'passControl': new FormControl('', [Validators.required]),
+      'rememberControl': new FormControl()
+    });
+  }
+
+  ngOnInit() { }
+
+  entrar() {
+    console.log(this.frmUser);
   }
 
 }
