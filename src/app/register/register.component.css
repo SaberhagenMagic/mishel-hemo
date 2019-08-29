@@ -1,0 +1,20 @@
+.register-form {
+    width: 500px;
+    text-align: center;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+.form-content > * {
+    width: 100%;
+}
+.title {
+    text-align: center;
+    color: #673ab7;
+    font-weight: normal;
+}
+.dvLink {
+    text-align: right;
+}

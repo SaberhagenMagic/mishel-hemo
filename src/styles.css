@@ -4,3 +4,15 @@
 @import "~@fortawesome/fontawesome-free/css/brands.css";
 @import "~@fortawesome/fontawesome-free/css/solid.css";
 @import "~@fortawesome/fontawesome-free/css/regular.css";
+
+body {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.form-icon, .form-icon.mat-icon {
+    color: rgba(0, 0, 0, .54);
+}
+.mat-focused .mat-icon, .mat-focused .form-icon {
+    color: #673ab7;
+}

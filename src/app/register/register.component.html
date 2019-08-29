@@ -1,11 +1,56 @@
-<mat-card class="principal-card">
-    <mat-card-header>
-        <mat-card-title>Registro</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile colspan="4" rowspan="1"></mat-grid-tile> 
+    <mat-grid-tile colspan="1" rowspan="3"></mat-grid-tile>
+    <mat-grid-tile colspan="2" rowspan="3">
 
-    </mat-card-content>
-    <mat-card-actions>
-            <button mat-button>LIKE</button>
-    </mat-card-actions>
-</mat-card>
+        <form class="register-form" [formGroup]="frmUsuario" (ngSubmit)="registraNuevo()">
+            <div class="form-content">
+                <h3 class="title" color="primary">Registro de Usuario</h3>
+                <mat-form-field>
+                    <input matInput placeholder="nombre" formControlName="nombreControl" required>
+                    <mat-icon matSuffix class="far fa-user form-icon"></mat-icon>
+                    <mat-error *ngIf="frmUsuario.controls['nombreControl'].errors?.required">
+                        El nombre es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="frmUsuario.controls['nombreControl'].errors?.minlength">
+                        El nombre debe tener una longitud de mas de 2 caracteres.
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <input matInput placeholder="correo" formControlName="emailControl" required>
+                    <mat-icon matSuffix class="far fa-envelope form-icon"></mat-icon>
+                    <mat-error *ngIf="frmUsuario.controls['emailControl'].errors?.required">
+                        El correo es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="frmUsuario.controls['emailControl'].errors?.pattern">
+                        Correo <strong>invalido</strong>
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <input matInput placeholder="contraseña" formControlName="passControl" required [type]="hide ? 'password' : 'text'" >
+                    <button mat-icon-button matSuffix (click)="hide = !hide" 
+                            [attr.aria-label]="'Oculpar contraseña'" 
+                            [attr.aria-pressend]="hide">
+                            <mat-icon class="far {{ hide ? 'fa-eye' : 'fa-eye-slash' }} form-icon"></mat-icon>
+                    </button>
+                    <mat-error *ngIf="frmUsuario.controls['passControl'].errors?.required">
+                        La constraseña es <strong>requerida</strong>
+                    </mat-error>
+                    <mat-error *ngIf="frmUsuario.controls['passControl'].errors?.minlength">
+                        La contraseña debe tener un minimo de 6 caracteres.
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="dvLink">
+                <a routerLink="/login" class="txt1">¿Ya tienes cuenta? / Ingresar</a>
+            </div>
+            <button mat-button type="submit" color="primary" [disabled]="!frmUsuario.valid">Registrar</button>
+        </form>
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="3"></mat-grid-tile>
+    <mat-grid-tile colspan="4"></mat-grid-tile>
+</mat-grid-list>

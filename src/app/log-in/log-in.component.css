@@ -8,9 +8,3 @@
 .form-content > * {
     width: 100%;
 }
-.form-icon, .form-icon.mat-icon {
-    color: rgba(0, 0, 0, .54);
-}
-.mat-focused .mat-icon, .mat-focused .form-icon {
-    color: #673ab7;
-}
