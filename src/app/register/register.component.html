@@ -7,7 +7,7 @@
             <div class="form-content">
                 <h3 class="title" color="primary">Registro de Usuario</h3>
                 <mat-form-field>
-                    <input matInput placeholder="nombre" formControlName="nombreControl" required>
+                    <input matInput placeholder="nombre y apellido" formControlName="nombreControl" required>
                     <mat-icon matSuffix class="far fa-user form-icon"></mat-icon>
                     <mat-error *ngIf="frmUsuario.controls['nombreControl'].errors?.required">
                         El nombre es <strong>requerido</strong>

@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
 
+import { UsuarioModel } from "../models/usuario.model";
+import { AuthService } from "../services/auth.service";
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +17,7 @@ export class RegisterComponent implements OnInit {
   hide = true;
   rememberme: boolean = false;
 
-  constructor( private router: Router ) { }
+  constructor( private auth: AuthService, private router: Router ) { }
 
   ngOnInit() {
     this.frmUsuario = new FormGroup({
@@ -25,7 +28,34 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  registraNuevo() {
-    console.log(this.frmUsuario);
+registraNuevo() {
+  // console.log(this.frmUsuario);
+  let usuario = new UsuarioModel();
+  usuario.email = this.frmUsuario.value['emailControl'];
+  usuario.nombre = this.frmUsuario.value['nombreControl'];
+  usuario.password = this.frmUsuario.value['passControl'];
+  // console.log(usuario);
+
+  /* Swal.fire({
+    allowOutsideClick: false,
+    type: 'info',
+    text: 'Espere por favor...'
+  });
+  Swal.showLoading(); */
+
+  this.auth.newUser( usuario )
+    .subscribe( response => {
+      console.log(response);
+      // Swal.close();
+
+      this.router.navigateByUrl('/login');
+    }, (err) => {
+      console.error(err.error.error.message);
+      /* Swal.fire({
+        type: 'error',
+        title: 'Error al registrar',
+        text: err.error.error.message
+      }); */
+    });
   }
 }
