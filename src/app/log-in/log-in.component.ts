@@ -30,7 +30,7 @@ export class LogInComponent implements OnInit {
   ngOnInit() { }
 
   entrar() {
-    // console.log(this.frmUser);
+    console.log(this.frmUser);
     let usuario = new UsuarioModel();
     usuario.email = this.frmUser.value['emailControl'];
     usuario.password = this.frmUser.value['passControl'];
@@ -43,13 +43,13 @@ export class LogInComponent implements OnInit {
     Swal.showLoading();
 
     this.auth.login( usuario ).subscribe( response => {
-      console.log(response);
+      //console.log(response);
       Swal.close();
       /* if (this.rememberme) {
         localStorage.setItem('email', usuario.email);
       } */
 
-      // this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/inicio');
     }, (err) => {
       console.error(err.error.error.message);
       Swal.fire({

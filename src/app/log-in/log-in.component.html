@@ -17,7 +17,7 @@
                   </mat-error>
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field *ngIf="!frmUser.pristine && frmUser.controls['emailControl'].status == 'VALID'">
                 <input matInput placeholder="contraseña" formControlName="passControl" required [type]="hide ? 'password' : 'text'" >
                 <button mat-icon-button matSuffix (click)="hide = !hide" 
                         [attr.aria-label]="'Oculpar contraseña'" 
@@ -29,7 +29,7 @@
                 </mat-error>
               </mat-form-field>
               <!-- [disabled]="!frmUser.valid" -->
-              <button mat-button color=primary type="submit">Entrar</button>
+              <button mat-button color=primary type="submit" [disabled]="!frmUser.valid" >Entrar</button>
             </div>
           </form>
 

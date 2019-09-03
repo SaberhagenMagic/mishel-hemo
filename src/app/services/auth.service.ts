@@ -13,11 +13,11 @@ export class AuthService {
     userToken: string;
 
     constructor(private http: HttpClient) {
-        // this.loadToken();
+        this.loadToken();
     }
 
     logout() {
-        //localStorage.removeItem('token');
+        localStorage.removeItem('token');
     }
     
     login(usuario: UsuarioModel) {
@@ -31,7 +31,7 @@ export class AuthService {
         ).pipe(
             map( resp => {
             // console.log('Entro en mapa de del RXJS');
-            // this.saveToken( resp['idToken'] );
+            this.saveToken( resp['idToken'] );
             return resp;
             })
         );
@@ -50,13 +50,13 @@ export class AuthService {
         ).pipe(
             map( resp => {
             // console.log('Entro en mapa de del RXJS');
-            // this.saveToken( resp['idToken'] );
+            this.saveToken( resp['idToken'] );
             return resp;
             })
         );
     }
     
-    /* private saveToken(idToken: string) {
+    private saveToken(idToken: string) {
         this.userToken = idToken;
         localStorage.setItem('token', idToken);
 
@@ -66,7 +66,7 @@ export class AuthService {
         localStorage.setItem('expira', hoy.getTime().toString());
         }
 
-        loadToken() {
+    loadToken() {
         if (localStorage.getItem('token')) {
             this.userToken = localStorage.getItem('token');
         } else {
@@ -92,5 +92,5 @@ export class AuthService {
             return false;
         }
 
-    } */
+    } 
 }

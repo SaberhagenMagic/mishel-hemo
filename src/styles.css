@@ -9,6 +9,7 @@ body {
     font-family: Roboto,"Helvetica Neue",sans-serif;
     background-color: #f4f4f4;
     text-align: center;
+    margin: 0;
 }
 .form-icon, .form-icon.mat-icon {
     color: rgba(0, 0, 0, .54);
