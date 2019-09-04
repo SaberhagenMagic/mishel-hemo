@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { HemofiliaV19Component } from './hemofilia-v19/hemofilia-v19.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    HemofiliaV19Component
   ],
   imports: [
     BrowserModule,
