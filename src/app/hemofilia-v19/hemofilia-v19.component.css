@@ -1,0 +1,6 @@
+.hemo-container {
+    width: 500px;
+}
+.hemo-container > * {
+    display: block;
+}
