@@ -1,6 +1,17 @@
 
 <mat-toolbar>
+    <button mat-icon-button aria-label="Nuevo" (click)="goRegister()">
+        <mat-icon class="fa fa-file-alt"></mat-icon>
+    </button>
     <button mat-icon-button aria-label="Guardar">
         <mat-icon class="fa fa-save"></mat-icon>
     </button>
 </mat-toolbar>
+<!-- Registro -->
+<div *ngIf="showRegister" class="dvRegister">
+    Reg <!--<app-hemofilia-v19></app-hemofilia-v19>-->
+</div>
+<!-- Panel -->
+<div class="dvPanel">
+    
+</div>

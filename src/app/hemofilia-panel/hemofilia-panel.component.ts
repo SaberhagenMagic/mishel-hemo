@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hemofilia-panel.component.css']
 })
 export class HemofiliaPanelComponent implements OnInit {
+  showRegister = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  goRegister() {
+    this.showRegister = !this.showRegister;
+  }
 }
