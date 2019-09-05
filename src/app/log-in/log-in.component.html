@@ -17,7 +17,7 @@
                   </mat-error>
               </mat-form-field>
 
-              <mat-form-field *ngIf="!frmUser.pristine && frmUser.controls['emailControl'].status == 'VALID'">
+              <mat-form-field *ngIf="!frmUser.pristine && frmUser.controls['emailControl'].status == 'VALID'" class="animated fadeInUp">
                 <input matInput placeholder="contraseña" formControlName="passControl" required [type]="hide ? 'password' : 'text'" >
                 <button mat-icon-button matSuffix (click)="hide = !hide" 
                         [attr.aria-label]="'Oculpar contraseña'" 

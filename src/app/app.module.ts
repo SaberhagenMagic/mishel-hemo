@@ -11,6 +11,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { HemofiliaV19Component } from './hemofilia-v19/hemofilia-v19.component';
+import { HemofiliaPanelComponent } from './hemofilia-panel/hemofilia-panel.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HemofiliaV19Component } from './hemofilia-v19/hemofilia-v19.component';
     LogInComponent,
     RegisterComponent,
     HomeComponent,
-    HemofiliaV19Component
+    HemofiliaV19Component,
+    HemofiliaPanelComponent
   ],
   imports: [
     BrowserModule,
