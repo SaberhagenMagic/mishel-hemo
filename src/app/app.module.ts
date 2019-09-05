@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { Ng2TableModule } from "ng2-table/ng2-table";
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from "./material.module";
@@ -28,7 +29,8 @@ import { HemofiliaPanelComponent } from './hemofilia-panel/hemofilia-panel.compo
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    Ng2TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
