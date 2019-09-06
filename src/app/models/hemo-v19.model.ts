@@ -1,4 +1,4 @@
-export class hemo {
+export class Hemo {
     registroId: string;
     medico: string;
     rfc: string;

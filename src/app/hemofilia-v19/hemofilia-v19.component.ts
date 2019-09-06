@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { hemo } from "../models/hemo-v19.model";
+import { Hemo } from "../models/hemo-v19.model";
+import { HemoService } from "../services/hemo.service";
 
 @Component({
   selector: 'app-hemofilia-v19',
@@ -10,18 +11,18 @@ import { hemo } from "../models/hemo-v19.model";
 })
 export class HemofiliaV19Component implements OnInit {
 
-  patient = new hemo();
+  patient = new Hemo();
   frmPatient: FormGroup;
 
-  constructor() {
-    this.formPatienInit();
+  constructor(private hemoservice: HemoService) {
+    this.frmPatient = this.createFormGroupHemo();
   }
 
   ngOnInit() {
   }
 
-  formPatienInit(){
-    this.frmPatient = new FormGroup({
+  createFormGroupHemo() {
+    return new FormGroup({
       'registroId' : new FormControl(),
       'medico': new FormControl(),
       'rfc': new FormControl(),
@@ -52,5 +53,12 @@ export class HemofiliaV19Component implements OnInit {
 
   saveRegister() {
     console.log(this.frmPatient);
+    this.patient = this.frmPatient.value;
+
+    this.hemoservice.savePatient(this.patient)
+        .subscribe((resp: any) => {
+          console.log(resp);
+          this.frmPatient = resp;
+        });
   }
 }

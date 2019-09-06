@@ -1,7 +1,7 @@
 <div class="hemo-container">
     <form id="frmHemo" [formGroup]="frmPatient" (ngSubmit)="saveRegister()">
         <mat-form-field>
-            <input matInput placeholder="Id" formControlName="registroId" disabled="disabled">
+            <input matInput placeholder="Id" formControlName="registroId" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Médico" formControlName="medico">
