@@ -1,4 +1,5 @@
 export class hemo {
+    registroId: string;
     medico: string;
     rfc: string;
     beneficiario: number;

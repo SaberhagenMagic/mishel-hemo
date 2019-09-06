@@ -1,74 +1,81 @@
 <div class="hemo-container">
-    <mat-form-field>
-        <input placeholder="Médico">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="RFC">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Beneficiario" type="number">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Apellido Paterno">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Apellido Materno">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Nombre(s)">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Fecha de Nacimiento" type="date">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Talla (m)" type="number">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Peso (kg)" type="number">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Fecha de Diagnóstico" type="date">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Tipo de Hemofilia">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Factor Deficiente">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Última medición de Factor Deficiente Ul/mL" type="number">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Fecha del última medición de factor deficiente" type="date">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Articulación Blanco">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Tipo de Hemofilia por Severidad">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-checkbox>¿Actualmente, el paciente tiene respuesta a desmopresina?</mat-checkbox>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-checkbox>¿El paciente ha presentado inhibidores?</mat-checkbox>
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Última medición de Inhibidores UI/mL" type="number">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Fecha de Última medición de Inhibidores" type="date">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Tratamiento Profilaxis o demanda">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Descripción Medicamento">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="UI/kg" type="number">
-    </mat-form-field>
-    <mat-form-field>
-        <input placeholder="Frecuencia (veces por semana)">
-    </mat-form-field>
+    <form id="frmHemo" [formGroup]="frmPatient" (ngSubmit)="saveRegister()">
+        <mat-form-field>
+            <input matInput placeholder="Id" formControlName="registroId" disabled="disabled">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Médico" formControlName="medico">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="RFC" formControlName="rfc">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Beneficiario" type="number" formControlName="beneficiario">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Apellido Paterno" formControlName="apaterno">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Apellido Materno" formControlName="amaterno">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nombre(s)" formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Fecha de Nacimiento" type="date" formControlName="fechanacimiento">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Talla (m)" type="number" formControlName="talla">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Peso (kg)" type="number" formControlName="peso">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Fecha de Diagnóstico" type="date" formControlName="fechadiagnostico">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Tipo de Hemofilia" formControlName="tipohemofilia">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Factor Deficiente" formControlName="factordeficiente">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Última medición de Factor Deficiente Ul/mL" type="number" formControlName="ultimamedicion_fd">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Fecha del última medición de factor deficiente" type="date" formControlName="fechaultimamedicion_fd">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Articulación Blanco" formControlName="articulacionblanco">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Tipo de Hemofilia por Severidad" formControlName="tipohemofiliaseveridad">
+        </mat-form-field>
+        <div>
+            <mat-checkbox formControlName="respuestadesmopresina">¿Actualmente, el paciente tiene respuesta a desmopresina?</mat-checkbox>
+        </div>
+        <div>
+            <mat-checkbox formControlName="presentainhibidores">¿El paciente ha presentado inhibidores?</mat-checkbox>
+        </div>
+        <mat-form-field>
+            <input matInput placeholder="Última medición de Inhibidores UI/mL" type="number" formControlName="ultimamedicióninhibidores">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Fecha de Última medición de Inhibidores" type="date" formControlName="fechaultimamedicióninhibidores">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Tratamiento Profilaxis o demanda" formControlName="tratamientoprofilaxisdemanda">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Descripción Medicamento" formControlName="descripciónmedicamento">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="UI/kg" type="number" formControlName="ui_kg">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Frecuencia (veces por semana)" formControlName="frecuenciasemanal">
+        </mat-form-field>
+
+        <button type="submit">Guardar</button>
+    </form>
 </div>

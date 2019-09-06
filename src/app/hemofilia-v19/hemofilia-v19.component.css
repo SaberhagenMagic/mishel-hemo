@@ -4,3 +4,10 @@
 .hemo-container > * {
     display: block;
 }
+#frmHemo {
+    width: 500px;
+}
+
+#frmHemo .mat-form-field {
+    display: block;
+}
