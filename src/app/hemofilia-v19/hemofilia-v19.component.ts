@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { Hemo } from "../models/hemo-v19.model";
 import { HemoService } from "../services/hemo.service";
@@ -14,11 +14,39 @@ export class HemofiliaV19Component implements OnInit {
   patient = new Hemo();
   frmPatient: FormGroup;
 
-  constructor(private hemoservice: HemoService) {
-    this.frmPatient = this.createFormGroupHemo();
+  constructor(private hemoservice: HemoService, 
+              private formBuilder: FormBuilder) {
+    // this.frmPatient = this.createFormGroupHemo();
   }
 
   ngOnInit() {
+    this.frmPatient = this.formBuilder.group({
+      registroId : [],
+      medico: [],
+      rfc: [],
+      beneficiario: [],
+      apaterno: [],
+      amaterno: [],
+      nombre: [],
+      fechanacimiento: [],
+      talla: [],
+      peso: [],
+      fechadiagnostico: [],
+      tipohemofilia: [],
+      factordeficiente: [],
+      ultimamedicion_fd: [],
+      fechaultimamedicion_fd: [],
+      articulacionblanco: [],
+      tipohemofiliaseveridad: [],
+      respuestadesmopresina: false,
+      presentainhibidores: false,
+      ultimamedicióninhibidores: [],
+      fechaultimamedicióninhibidores: [],
+      tratamientoprofilaxisdemanda: [],
+      descripciónmedicamento: [],
+      ui_kg: [],
+      frecuenciasemanal: []
+    });
   }
 
   createFormGroupHemo() {
@@ -58,7 +86,7 @@ export class HemofiliaV19Component implements OnInit {
     this.hemoservice.savePatient(this.patient)
         .subscribe((resp: any) => {
           console.log(resp);
-          this.frmPatient = resp;
+          // this.frmPatient
         });
   }
 }

@@ -30,7 +30,7 @@ export class LogInComponent implements OnInit {
   ngOnInit() { }
 
   entrar() {
-    console.log(this.frmUser);
+    // console.log(this.frmUser);
     let usuario = new UsuarioModel();
     usuario.email = this.frmUser.value['emailControl'];
     usuario.password = this.frmUser.value['passControl'];
