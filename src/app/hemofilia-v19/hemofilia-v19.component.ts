@@ -86,7 +86,8 @@ export class HemofiliaV19Component implements OnInit {
     this.hemoservice.savePatient(this.patient)
         .subscribe((resp: any) => {
           console.log(resp);
-          // this.frmPatient
+          //this.frmPatient.setValue({registroId: resp.registroId});
+          this.frmPatient.patchValue({registroId: resp.registroId});
         });
   }
 }
