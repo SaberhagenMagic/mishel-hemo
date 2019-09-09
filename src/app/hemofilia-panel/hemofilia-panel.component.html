@@ -13,24 +13,6 @@
 </div>
 <!-- Panel -->
 <div class="dvPanel">
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Column1</th>
-            <th>Column2</th>
-            <th>Column3</th>
-            <th>Column4</th>
-            <th>Column5</th>
-        </tr>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+    <ng-table [config]="config" [columns]="columns" [rows]="rows">
+    </ng-table>
 </div>

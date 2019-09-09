@@ -22,4 +22,33 @@ export class HemoService {
                   })
                 );
   }
+
+  updatePatient( patient: Hemo ) {
+    const patientInfo = {
+      ...patient
+    };
+    delete patientInfo.registroId;
+
+    return this.http.put(`${ this.url }/hemofilia/${ patient.registroId }.json`,patientInfo);
+  }
+
+  getPatients() {
+    return this.http.get(`${ this.url }/hemofilio.js`)
+            .pipe(
+              map(this.toArray)
+            );
+  }
+
+  private toArray( patientObj: object  ) {
+    const resultArray: Hemo[] = [];
+
+    Object.keys( patientObj ). forEach( key => {
+      const register: Hemo = patientObj[key];
+      register.registroId = key;
+
+      resultArray.push(register);
+    });
+
+    return resultArray;
+  }
 }

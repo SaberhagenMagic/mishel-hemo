@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HemoService } from "../services/hemo.service";
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-hemofilia-panel',
@@ -9,7 +11,11 @@ export class HemofiliaPanelComponent implements OnInit {
   showRegister = false;
 
   public rows: Array<any> = [];
-  public columns: Array<any> = [];
+  public columns: Array<any> = [
+    {title: 'Med', name: 'medico'},
+    {title: 'Benef', name: 'beneficiario'},
+    {title: 'Nom', name: 'nombre'}
+  ];
   public page: number = 1;
   public itemPerPage: number = 10;
   public maxSise : number = 5;
@@ -22,11 +28,18 @@ export class HemofiliaPanelComponent implements OnInit {
     className: ['table-striped', 'table-bordered']
   };
 
-  public data: Array<any> = [];
+  // public data: Array<any> = [];
 
-  constructor() { }
+  constructor(private hemoSrv: HemoService ) {
+    this.hemoSrv.getPatients()
+        .subscribe( response => {
+          console.log(response);
+          this.rows = response;
+        });
+  }
 
   ngOnInit() {
+
   }
 
   goRegister() {

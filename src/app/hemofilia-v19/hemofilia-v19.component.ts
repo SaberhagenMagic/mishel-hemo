@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 import { Hemo } from "../models/hemo-v19.model";
 import { HemoService } from "../services/hemo.service";
+import { SnackMessageService } from "../services/snack-message.service";
 
 @Component({
   selector: 'app-hemofilia-v19',
@@ -15,12 +18,17 @@ export class HemofiliaV19Component implements OnInit {
   frmPatient: FormGroup;
 
   constructor(private hemoservice: HemoService, 
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private msg: SnackMessageService) {
     // this.frmPatient = this.createFormGroupHemo();
   }
 
   ngOnInit() {
-    this.frmPatient = this.formBuilder.group({
+    this.frmPatient = this.createFormGroup();
+  }
+
+  private createFormGroup(){
+    return this.formBuilder.group({
       registroId : [],
       medico: [],
       rfc: [],
@@ -49,45 +57,26 @@ export class HemofiliaV19Component implements OnInit {
     });
   }
 
-  createFormGroupHemo() {
-    return new FormGroup({
-      'registroId' : new FormControl(),
-      'medico': new FormControl(),
-      'rfc': new FormControl(),
-      'beneficiario': new FormControl(),
-      'apaterno': new FormControl(),
-      'amaterno': new FormControl(),
-      'nombre': new FormControl(),
-      'fechanacimiento': new FormControl(),
-      'talla': new FormControl(),
-      'peso': new FormControl(),
-      'fechadiagnostico': new FormControl(),
-      'tipohemofilia': new FormControl(),
-      'factordeficiente': new FormControl(),
-      'ultimamedicion_fd': new FormControl(),
-      'fechaultimamedicion_fd': new FormControl(),
-      'articulacionblanco': new FormControl(),
-      'tipohemofiliaseveridad': new FormControl(),
-      'respuestadesmopresina': new FormControl(),
-      'presentainhibidores': new FormControl(),
-      'ultimamedicióninhibidores': new FormControl(),
-      'fechaultimamedicióninhibidores': new FormControl(),
-      'tratamientoprofilaxisdemanda': new FormControl(),
-      'descripciónmedicamento': new FormControl(),
-      'ui_kg': new FormControl(),
-      'frecuenciasemanal': new FormControl()
-    });
-  }
-
   saveRegister() {
     console.log(this.frmPatient);
     this.patient = this.frmPatient.value;
 
-    this.hemoservice.savePatient(this.patient)
-        .subscribe((resp: any) => {
-          console.log(resp);
-          //this.frmPatient.setValue({registroId: resp.registroId});
-          this.frmPatient.patchValue({registroId: resp.registroId});
-        });
+    let requestePac: Observable<any>;
+
+    // Swal.fire();
+    // Swal.showLoading();
+    
+    if( this.patient.registroId ) {
+      requestePac = this.hemoservice.updatePatient(this.patient);
+    } else {
+      requestePac = this.hemoservice.savePatient(this.patient);  
+    }
+        
+    requestePac.subscribe((resp: any) => {
+      console.log(resp);
+      //this.frmPatient.setValue({registroId: resp.registroId});
+      this.frmPatient.patchValue({registroId: resp.registroId});
+      this.msg.showMessage('Guardado');
+    });
   }
 }
