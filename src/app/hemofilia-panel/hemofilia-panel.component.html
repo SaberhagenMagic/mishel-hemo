@@ -12,7 +12,9 @@
     <app-hemofilia-v19></app-hemofilia-v19>
 </div>
 <!-- Panel -->
-<div class="dvPanel">
-    <ng-table [config]="config" [columns]="columns" [rows]="rows">
+<div *ngIf="!showRegister" class="dvPanel">
+    <ng-table [config]="config"
+            (cellClicked)="onCellClick($event)" 
+            [columns]="columns" [rows]="rows">
     </ng-table>
 </div>

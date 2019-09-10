@@ -14,7 +14,7 @@ export class HemoService {
   constructor(private http: HttpClient) { }
 
   savePatient( patient: Hemo) {
-    return this.http.post(`${ this.url }/hemofilia.json`, patient)
+    return this.http.post(`${ this.url }hemofilia.json`, patient)
                 .pipe(
                   map( (resp: any) => {
                       patient.registroId = resp.name;
@@ -29,11 +29,11 @@ export class HemoService {
     };
     delete patientInfo.registroId;
 
-    return this.http.put(`${ this.url }/hemofilia/${ patient.registroId }.json`,patientInfo);
+    return this.http.put(`${ this.url }hemofilia/${ patient.registroId }.json`,patientInfo);
   }
 
   getPatients() {
-    return this.http.get(`${ this.url }/hemofilio.js`)
+    return this.http.get(`${ this.url }hemofilia.json`)
             .pipe(
               map(this.toArray)
             );
@@ -41,10 +41,12 @@ export class HemoService {
 
   private toArray( patientObj: object  ) {
     const resultArray: Hemo[] = [];
+    let i = 1;
 
     Object.keys( patientObj ). forEach( key => {
       const register: Hemo = patientObj[key];
       register.registroId = key;
+      register['orden'] = i++;
 
       resultArray.push(register);
     });
