@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { Ng2TableModule } from "ng2-table/ng2-table";
 import { AngularFireModule } from "@angular/fire";
+import { GridModule } from "ng2-qgrid";
+import { ThemeModule } from "ng2-qgrid/theme/material";
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from "./material.module";
@@ -31,8 +32,9 @@ import { HemofiliaPanelComponent } from './hemofilia-panel/hemofilia-panel.compo
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
-    Ng2TableModule,
-    AngularFireModule
+    AngularFireModule,
+    GridModule,
+    ThemeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

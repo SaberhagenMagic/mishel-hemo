@@ -12,9 +12,9 @@
     <app-hemofilia-v19></app-hemofilia-v19>
 </div>
 <!-- Panel -->
-<div *ngIf="!showRegister" class="dvPanel">
-    <ng-table [config]="config"
-            (cellClicked)="onCellClick($event)" 
-            [columns]="columns" [rows]="rows">
-    </ng-table>
+<div  class="dvPanel">
+    <q-grid [rows]="rows | async">
+        <q-grid-columns generation="deep">
+        </q-grid-columns>
+    </q-grid>
 </div>

@@ -32,6 +32,10 @@ export class HemoService {
     return this.http.put(`${ this.url }hemofilia/${ patient.registroId }.json`,patientInfo);
   }
 
+  getAllPatients() {
+    return this.http.get(`${ this.url }hemofilia.json`);
+  }
+
   getPatients() {
     return this.http.get(`${ this.url }hemofilia.json`)
             .pipe(

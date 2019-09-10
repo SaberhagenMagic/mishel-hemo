@@ -1,17 +1,18 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HemoService } from "../services/hemo.service";
 import Swal from "sweetalert2";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hemofilia-panel',
   templateUrl: './hemofilia-panel.component.html',
   styleUrls: ['./hemofilia-panel.component.css'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class HemofiliaPanelComponent implements OnInit {
   showRegister = false;
-
-  public rows: Array<any> = [];
+  rows: Observable<[]>;
+  
   public columns: Array<any> = [
     { title: '', name: '' },
     { title: '#', name: 'orden', sort: 'asc' },
@@ -41,17 +42,6 @@ export class HemofiliaPanelComponent implements OnInit {
     { title: 'Frecuen', name: 'frecuenciasemanal'}
 
   ];
-  public page: number = 1;
-  public itemPerPage: number = 10;
-  public maxSise : number = 5;
-  public length : number = 0;
-
-  public config: any = {
-    paging: true,
-    sorting: { columns: this.columns },
-    filterring: { filterring: '' },
-    className: ['dataTable', 'table-striped', 'table-bordered']
-  };
 
   constructor(private hemoSrv: HemoService ) {
     Swal.fire({
@@ -61,12 +51,13 @@ export class HemofiliaPanelComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.hemoSrv.getPatients()
-        .subscribe( response => {
-          // console.log(response);
-          Swal.close();
-          this.rows = response;
-        });
+    // this.hemoSrv.getPatients()
+    //     .subscribe( response => {
+    //       console.log(response);
+    //       Swal.close();
+    //       this.rows = response;
+    //     });
+    this.rows = this.hemoSrv.getAllPatients();
   }
 
   ngOnInit() {
@@ -76,7 +67,5 @@ export class HemofiliaPanelComponent implements OnInit {
     this.showRegister = !this.showRegister;
   }
 
-  public onCellClick(data: any): any {
-    console.log(data);
-  }
+
 }
