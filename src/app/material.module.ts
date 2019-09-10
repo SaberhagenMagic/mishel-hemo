@@ -11,7 +11,9 @@ import {
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule,
+    MatChipsModule
  } from "@angular/material";
 
  @NgModule({
@@ -26,7 +28,10 @@ import {
         MatButtonModule,
         MatIconModule,
         MatTooltipModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSelectModule,
+        MatChipsModule,
+        MatIconModule
      ],
      exports: [
         BrowserAnimationsModule,
@@ -39,7 +44,10 @@ import {
         MatButtonModule,
         MatIconModule,
         MatTooltipModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSelectModule,
+        MatChipsModule,
+        MatIconModule
      ]
  })
 

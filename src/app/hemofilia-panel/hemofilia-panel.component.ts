@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HemoService } from "../services/hemo.service";
 import Swal from "sweetalert2";
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-hemofilia-panel',
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class HemofiliaPanelComponent implements OnInit {
   showRegister = false;
-  rows: Observable<[]>;
+  rows$: Observable<any[]>;
   
   public columns: Array<any> = [
     { title: '', name: '' },
@@ -51,13 +51,12 @@ export class HemofiliaPanelComponent implements OnInit {
     });
     Swal.showLoading();
 
-    // this.hemoSrv.getPatients()
-    //     .subscribe( response => {
-    //       console.log(response);
-    //       Swal.close();
-    //       this.rows = response;
-    //     });
-    this.rows = this.hemoSrv.getAllPatients();
+    this.hemoSrv.getPatients()
+        .subscribe( (response: any[]) => {
+          // console.log(response);
+          Swal.close();
+          this.rows$ = of(response);
+        });
   }
 
   ngOnInit() {
