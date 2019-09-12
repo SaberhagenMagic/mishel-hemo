@@ -15,7 +15,7 @@ export class HemofiliaPanelComponent implements OnInit {
   // { title: '', key: 'registroId', pin: "left", width: "50", class: "tdMenu" },
   pacColumns = [
     
-    { title: '#', key: 'orden' },
+    { title: '#', key: 'orden', type:'number', width:'50' },
     { title: 'Med', key: 'medico' },
     { title: 'RFC', key: 'rfc' },
     { title: 'Benef', key: 'beneficiario' },
@@ -66,5 +66,12 @@ export class HemofiliaPanelComponent implements OnInit {
     this.showRegister = !this.showRegister;
   }
 
+  editRegist(item: any) {
+    console.log(item);
+  }
+
+  deleteRegist(item: any){
+    console.log(item);
+  }
 
 }

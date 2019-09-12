@@ -20,13 +20,17 @@
         <q-grid-columns>
             <q-grid-column key="registroId" title="" pin="left" [width]="50" [class]="tdMenu">
                 <ng-template for="body" let-$cell>
-                <mat-menu #appMenu="matMenu">
-                    <button mat-menu-item>Editar</button>
-                    <button mat-menu-item>Borrar</button>
-                </mat-menu>
-                <button mat-icon-button [matMenuTriggerFor]="appMenu">
-                    <mat-icon>more_vert</mat-icon>
-                </button>
+                    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #appMenu="matMenu">
+                        <button mat-menu-item (click)="editRegist()">
+                            <mat-icon>edit</mat-icon><span>Editar</span>
+                        </button>
+                        <button mat-menu-item (click)="deleteRegist()">
+                            <mat-icon>delete</mat-icon><span>Borrar</span>
+                        </button>
+                    </mat-menu>
                 </ng-template>
             </q-grid-column>
         </q-grid-columns>
