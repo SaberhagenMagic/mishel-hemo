@@ -12,34 +12,34 @@ import { Observable, of } from 'rxjs';
 export class HemofiliaPanelComponent implements OnInit {
   showRegister = false;
   rows$: Observable<any[]>;
-  
-  public columns: Array<any> = [
-    { title: '', name: '' },
-    { title: '#', name: 'orden', sort: 'asc' },
-    { title: 'Med', name: 'medico' },
-    { title: 'RFC', name: 'rfc' },
-    { title: 'Benef', name: 'beneficiario' },
-    { title: 'A. Paterno', name: 'apaterno' },
-    { title: 'A. Materno', name: 'amaterno' },
-    { title: 'Nom', name: 'nombre' },
-    { title: 'Nac', name: 'fechanacimiento' },
-    { title: 'Talla', name: 'talla' },
-    { title: 'Peso', name: 'peso' },
-    { title: 'Diag', name: 'fechadiagnostico' },
-    { title: 'Tipo Hemo', name: 'tipohemofilia'},
-    { title: 'Factor Def', name: 'factordeficiente'},
-    { title: 'Ultima Me', name: 'ultimamedicion_fd'},
-    { title: 'Fecha Me', name: 'fechaultimamedicion_fd'},
-    { title: 'Artic B', name: 'articulacionblanco'},
-    { title: 'T Hemo Seve', name: 'tipohemofiliaseveridad'},
-    { title: 'Resp Desmo', name: 'respuestadesmopresina'},
-    { title: 'Pres Inhib', name: 'presentainhibidores'},
-    { title: 'Ultima Med Inhi', name: 'ultimamedicióninhibidores'},
-    { title: 'Fecha Inhi', name: 'fechaultimamedicióninhibidores'},
-    { title: 'Tratam Pro', name: 'tratamientoprofilaxisdemanda'},
-    { title: 'Descrip Med', name: 'descripciónmedicamento'},
-    { title: 'UI/kg', name: 'ui_kg'},
-    { title: 'Frecuen', name: 'frecuenciasemanal'}
+  // { title: '', key: 'registroId', pin: "left", width: "50", class: "tdMenu" },
+  pacColumns = [
+    
+    { title: '#', key: 'orden' },
+    { title: 'Med', key: 'medico' },
+    { title: 'RFC', key: 'rfc' },
+    { title: 'Benef', key: 'beneficiario' },
+    { title: 'A. Paterno', key: 'apaterno' },
+    { title: 'A. Materno', key: 'amaterno' },
+    { title: 'Nom', key: 'nombre' },
+    { title: 'Nac', key: 'fechanacimiento' },
+    { title: 'Talla', key: 'talla' },
+    { title: 'Peso', key: 'peso' },
+    { title: 'Diag', key: 'fechadiagnostico' },
+    { title: 'Tipo Hemo', key: 'tipohemofilia'},
+    { title: 'Factor Def', key: 'factordeficiente'},
+    { title: 'Ultima Me', key: 'ultimamedicion_fd'},
+    { title: 'Fecha Me', key: 'fechaultimamedicion_fd'},
+    { title: 'Artic B', key: 'articulacionblanco'},
+    { title: 'T Hemo Seve', key: 'tipohemofiliaseveridad'},
+    { title: 'Resp Desmo', key: 'respuestadesmopresina'},
+    { title: 'Pres Inhib', key: 'presentainhibidores'},
+    { title: 'Ultima Med Inhi', key: 'ultimamedicióninhibidores'},
+    { title: 'Fecha Inhi', key: 'fechaultimamedicióninhibidores'},
+    { title: 'Tratam Pro', key: 'tratamientoprofilaxisdemanda'},
+    { title: 'Descrip Med', key: 'descripciónmedicamento'},
+    { title: 'UI/kg', key: 'ui_kg'},
+    { title: 'Frecuen', key: 'frecuenciasemanal'}
 
   ];
 

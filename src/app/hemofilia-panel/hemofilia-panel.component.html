@@ -13,8 +13,22 @@
 </div>
 <!-- Panel -->
 <div  class="dvPanel">
-    <q-grid [rows]="rows$ | async">
-        <q-grid-columns generation="deep">
+    <!-- <q-grid [rows]="rows$ | async">
+        <q-grid-columns generation="deep"></q-grid-columns>
+    </q-grid> -->
+    <q-grid [columns]="pacColumns" [rows]="rows$ | async">
+        <q-grid-columns>
+            <q-grid-column key="registroId" title="" pin="left" [width]="50" [class]="tdMenu">
+                <ng-template for="body" let-$cell>
+                <mat-menu #appMenu="matMenu">
+                    <button mat-menu-item>Editar</button>
+                    <button mat-menu-item>Borrar</button>
+                </mat-menu>
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                </ng-template>
+            </q-grid-column>
         </q-grid-columns>
     </q-grid>
 </div>

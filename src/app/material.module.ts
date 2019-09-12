@@ -13,7 +13,8 @@ import {
     MatTooltipModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    MatMenuModule
  } from "@angular/material";
 
  @NgModule({
@@ -31,7 +32,8 @@ import {
         MatSnackBarModule,
         MatSelectModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        MatMenuModule
      ],
      exports: [
         BrowserAnimationsModule,
@@ -47,7 +49,8 @@ import {
         MatSnackBarModule,
         MatSelectModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        MatMenuModule
      ]
  })
 
