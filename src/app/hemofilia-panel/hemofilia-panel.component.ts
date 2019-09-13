@@ -13,8 +13,7 @@ export class HemofiliaPanelComponent implements OnInit {
   showRegister = false;
   rows$: Observable<any[]>;
   // { title: '', key: 'registroId', pin: "left", width: "50", class: "tdMenu" },
-  pacColumns = [
-    
+  pacColumns = [  
     { title: '#', key: 'orden', type:'number', width:'50' },
     { title: 'Med', key: 'medico' },
     { title: 'RFC', key: 'rfc' },
@@ -44,33 +43,47 @@ export class HemofiliaPanelComponent implements OnInit {
   ];
 
   constructor(private hemoSrv: HemoService ) {
+    this.refreshPanel();
+  }
+
+  ngOnInit() {  }
+  
+  showloadingMsg() {
     Swal.fire({
       allowOutsideClick: false,
       type: 'info',
       text: 'Espere por favor...'
     });
     Swal.showLoading();
-
+  }
+  
+  refreshPanel() {
+    this.showloadingMsg();
+    
     this.hemoSrv.getPatients()
-        .subscribe( (response: any[]) => {
-          // console.log(response);
-          Swal.close();
-          this.rows$ = of(response);
-        });
+    .subscribe( (response: any[]) => {
+      // console.log(response);
+      Swal.close();
+      this.rows$ = of(response);
+    });
   }
 
-  ngOnInit() {
+  findRegister(idReg: string) {
+    let _regist: any;
+    return _regist;
   }
-
-  private goRegister() {
+  
+  goRegister() {
     this.showRegister = !this.showRegister;
   }
 
-  editRegist(item: any) {
+  editRegist(idReg: string) {
+    let item = this.findRegister(idReg);
     console.log(item);
   }
-
-  deleteRegist(item: any){
+  
+  deleteRegist(idReg: string){
+    let item = this.findRegister(idReg);
     console.log(item);
   }
 
