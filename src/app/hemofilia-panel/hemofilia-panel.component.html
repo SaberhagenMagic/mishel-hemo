@@ -9,7 +9,7 @@
 </mat-toolbar>
 <!-- Registro -->
 <div *ngIf="showRegister" class="dvRegister">
-    <app-hemofilia-v19></app-hemofilia-v19>
+    <app-hemofilia-v19 [id]="id"></app-hemofilia-v19>
 </div>
 <!-- Panel -->
 <div *ngIf="!showRegister"  class="dvPanel">|
@@ -24,10 +24,10 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #appMenu="matMenu">
-                        <button mat-menu-item (click)="editRegist()">
+                        <button mat-menu-item (click)="editRegist($cell.value)">
                             <mat-icon>edit</mat-icon><span>Editar</span>
                         </button>
-                        <button mat-menu-item (click)="deleteRegist()">
+                        <button mat-menu-item (click)="deleteRegist($cell.value)">
                             <mat-icon>delete</mat-icon><span>Borrar</span>
                         </button>
                     </mat-menu>

@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
 export class HemofiliaPanelComponent implements OnInit {
   showRegister = false;
   rows$: Observable<any[]>;
+  id: string;
   // { title: '', key: 'registroId', pin: "left", width: "50", class: "tdMenu" },
   pacColumns = [  
     { title: '#', key: 'orden', type:'number', width:'50' },
@@ -78,8 +79,10 @@ export class HemofiliaPanelComponent implements OnInit {
   }
 
   editRegist(idReg: string) {
-    let item = this.findRegister(idReg);
-    console.log(item);
+    // let item = this.findRegister(idReg);
+    // console.log(idReg);
+    this.id = idReg;
+    this.goRegister();
   }
   
   deleteRegist(idReg: string){

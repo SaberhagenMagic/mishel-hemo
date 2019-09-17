@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -13,6 +13,7 @@ import { SnackMessageService } from "../services/snack-message.service";
   styleUrls: ['./hemofilia-v19.component.css']
 })
 export class HemofiliaV19Component implements OnInit {
+  @Input() id: string;
 
   patient = new Hemo();
   frmPatient: FormGroup;
@@ -24,13 +25,22 @@ export class HemofiliaV19Component implements OnInit {
   }
 
   ngOnInit() {
-    this.frmPatient = this.createFormGroup();
+    // console.log(`id: ${this.id}`);
+    if ( this.id !== 'nuevo' ) {
+      this.hemoservice.getPatient(this.id)
+          .subscribe( (resp: any) => {
+            console.log(resp);
+            
+          });
+    } else {
+      this.frmPatient = this.createFormGroup();
+    }
   }
 
   private createFormGroup(){
     return this.formBuilder.group({
       registroId : [],
-      medico: [],
+      medico: ['Prueba'],
       rfc: [],
       beneficiario: [],
       apaterno: [],
