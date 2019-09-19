@@ -28,19 +28,20 @@ export class HemofiliaV19Component implements OnInit {
     // console.log(`id: ${this.id}`);
     if ( this.id !== 'nuevo' ) {
       this.hemoservice.getPatient(this.id)
-          .subscribe( (resp: any) => {
-            console.log(resp);
-            
+          .subscribe( (resp: Hemo) => {
+            resp.registroId = this.id;
+            // console.log(resp);
+            this.frmPatient = this.createFormGroup(resp);
           });
     } else {
-      this.frmPatient = this.createFormGroup();
+      this.frmPatient = this.createNewFormGroup();
     }
   }
 
-  private createFormGroup(){
+  private createNewFormGroup() {
     return this.formBuilder.group({
       registroId : [],
-      medico: ['Prueba'],
+      medico: [],
       rfc: [],
       beneficiario: [],
       apaterno: [],
@@ -64,6 +65,38 @@ export class HemofiliaV19Component implements OnInit {
       descripciónmedicamento: [],
       ui_kg: [],
       frecuenciasemanal: []
+    });
+  }
+
+  private createFormGroup(val: Hemo) {
+    console.log(val);
+    
+    return this.formBuilder.group({
+      registroId : [val.registroId],
+      medico: [val.medico],
+      rfc: [val.rfc],
+      beneficiario: [val.beneficiario],
+      apaterno: [val.apaterno],
+      amaterno: [val.amaterno],
+      nombre: [val.nombre],
+      fechanacimiento: [val.fechanacimiento],
+      talla: [val.talla],
+      peso: [val.peso],
+      fechadiagnostico: [val.fechadiagnostico],
+      tipohemofilia: [val.tipohemofilia],
+      factordeficiente: [val.factordeficiente],
+      ultimamedicion_fd: [val.ultimamedicion_fd],
+      fechaultimamedicion_fd: [val.fechaultimamedicion_fd],
+      articulacionblanco: [val.articulacionblanco],
+      tipohemofiliaseveridad: [val.tipohemofiliaseveridad],
+      respuestadesmopresina: val.respuestadesmopresina,
+      presentainhibidores: val.presentainhibidores,
+      ultimamedicióninhibidores: [val.ultimamedicióninhibidores],
+      fechaultimamedicióninhibidores: [val.fechaultimamedicióninhibidores],
+      tratamientoprofilaxisdemanda: [val.tratamientoprofilaxisdemanda],
+      descripciónmedicamento: [val.descripciónmedicamento],
+      ui_kg: [val.ui_kg],
+      frecuenciasemanal: [val.frecuenciasemanal]
     });
   }
 

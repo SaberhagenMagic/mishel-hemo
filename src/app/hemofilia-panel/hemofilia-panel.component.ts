@@ -74,15 +74,15 @@ export class HemofiliaPanelComponent implements OnInit {
     return _regist;
   }
   
-  goRegister() {
+  goRegister(id: string) {
+    this.id = id;
     this.showRegister = !this.showRegister;
   }
 
   editRegist(idReg: string) {
     // let item = this.findRegister(idReg);
     // console.log(idReg);
-    this.id = idReg;
-    this.goRegister();
+    this.goRegister(idReg);
   }
   
   deleteRegist(idReg: string){
