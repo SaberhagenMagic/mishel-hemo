@@ -36,6 +36,10 @@ export class HemoService {
     return this.http.get(`${ this.url }hemofilia/${ id }.json`);
   }
 
+  deletePatients(id: string) {
+    return this.http.delete(`${ this.url }hemofilia/${ id }.json`);
+  }
+
   getPatients() {
     return this.http.get(`${ this.url }hemofilia.json`)
             .pipe(
