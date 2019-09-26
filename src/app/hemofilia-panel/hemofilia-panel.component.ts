@@ -3,6 +3,8 @@ import { HemoService } from "../services/hemo.service";
 import Swal from "sweetalert2";
 import { Observable, of } from 'rxjs';
 
+import { Hemo } from "../models/hemo-v19.model";
+
 @Component({
   selector: 'app-hemofilia-panel',
   templateUrl: './hemofilia-panel.component.html',
@@ -10,6 +12,11 @@ import { Observable, of } from 'rxjs';
   // encapsulation: ViewEncapsulation.None
 })
 export class HemofiliaPanelComponent implements OnInit {
+  bussy: boolean = false;
+  bussyServ$: Observable<boolean>;
+  patients: Hemo[] = [];
+  patients$: Observable<Hemo[]>;
+
   showRegister = false;
   rows$: Observable<any[]>;
   id: string;
@@ -43,11 +50,18 @@ export class HemofiliaPanelComponent implements OnInit {
 
   ];
 
-  constructor(private hemoSrv: HemoService ) {
-    this.refreshPanel();
-  }
+  constructor(private hemoSrv: HemoService ) { }
 
-  ngOnInit() {  }
+  ngOnInit() { 
+    this.bussyServ$ = this.hemoSrv.getBussy$();
+    this.bussyServ$.subscribe( _bussy => {
+      this.bussy = _bussy;
+      console.log(_bussy);
+    });
+
+    // this.refreshPanel();
+    this.getAllRegisters();
+   }
   
   showloadingMsg() {
     Swal.fire({
@@ -57,12 +71,21 @@ export class HemofiliaPanelComponent implements OnInit {
     });
     Swal.showLoading();
   }
+
+  getAllRegisters() {
+    this.patients$ = this.hemoSrv.getPatients$();
+    this.patients$.subscribe( (_regist) => {
+      console.log(_regist);
+      this.patients = _regist;
+      this.rows$ = of(_regist);
+    });
+  }
   
   refreshPanel() {
     this.showloadingMsg();
     
-    this.hemoSrv.getPatients()
-    .subscribe( (response: any[]) => {
+    this.hemoSrv.getPatients$()
+    .subscribe( (response: Hemo[]) => {
       // console.log(response);
       Swal.close();
       this.rows$ = of(response);
