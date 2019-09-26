@@ -66,7 +66,10 @@ export class HemofiliaPanelComponent implements OnInit {
       // console.log(response);
       Swal.close();
       this.rows$ = of(response);
-    });
+    }, ( err => {
+      Swal.close();
+      console.error(err);
+    }));
   }
 
   findRegister(idReg: string) {

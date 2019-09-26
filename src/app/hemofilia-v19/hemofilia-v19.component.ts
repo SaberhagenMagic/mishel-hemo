@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -14,6 +14,7 @@ import { SnackMessageService } from "../services/snack-message.service";
 })
 export class HemofiliaV19Component implements OnInit {
   @Input() id: string;
+  bussy = false;
 
   patient = new Hemo();
   frmPatient: FormGroup;
@@ -101,6 +102,7 @@ export class HemofiliaV19Component implements OnInit {
   }
 
   saveRegister() {
+    this.bussy = true;
     console.log(this.frmPatient);
     this.patient = this.frmPatient.value;
 
@@ -117,9 +119,14 @@ export class HemofiliaV19Component implements OnInit {
         
     requestePac.subscribe((resp: any) => {
       console.log(resp);
+      this.bussy = false;
+      
       //this.frmPatient.setValue({registroId: resp.registroId});
       this.frmPatient.patchValue({registroId: resp.registroId});
       this.msg.showMessage('Guardado');
-    });
+    }, (err => {
+      this.bussy = false;
+      console.error(err);
+    }));
   }
 }

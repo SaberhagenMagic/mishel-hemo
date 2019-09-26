@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { Hemo } from "../models/hemo-v19.model";
@@ -10,6 +11,8 @@ import { Hemo } from "../models/hemo-v19.model";
 export class HemoService {
 
   private url = 'https://statisticmedic.firebaseio.com/';
+
+  private patients$ = new Subject<Hemo[]>();
 
   constructor(private http: HttpClient) { }
 
