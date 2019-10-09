@@ -77,7 +77,7 @@
             <input matInput placeholder="Frecuencia (veces por semana)" formControlName="frecuenciasemanal">
         </mat-form-field>
 
-        <button type="submit">Guardar</button>
+        <button mat-button type="submit" [disabled]="!frmPatient.valid">Guardar</button>
     </form>
 </div>
 <app-bussy *ngIf="bussy"></app-bussy>

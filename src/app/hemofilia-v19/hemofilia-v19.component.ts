@@ -42,12 +42,12 @@ export class HemofiliaV19Component implements OnInit {
   private createNewFormGroup() {
     return this.formBuilder.group({
       registroId : [],
-      medico: [],
+      medico: ['', [Validators.required]],
       rfc: [],
       beneficiario: [],
-      apaterno: [],
+      apaterno: ['', [Validators.required]],
       amaterno: [],
-      nombre: [],
+      nombre: ['', [Validators.required]],
       fechanacimiento: [],
       talla: [],
       peso: [],
@@ -74,12 +74,12 @@ export class HemofiliaV19Component implements OnInit {
     
     return this.formBuilder.group({
       registroId : [val.registroId],
-      medico: [val.medico],
+      medico: [val.medico, [Validators.required]],
       rfc: [val.rfc],
       beneficiario: [val.beneficiario],
-      apaterno: [val.apaterno],
+      apaterno: [val.apaterno, [Validators.required]],
       amaterno: [val.amaterno],
-      nombre: [val.nombre],
+      nombre: [val.nombre, [Validators.required]],
       fechanacimiento: [val.fechanacimiento],
       talla: [val.talla],
       peso: [val.peso],

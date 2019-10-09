@@ -3,17 +3,17 @@
     <button mat-icon-button aria-label="Nuevo" (click)="goRegister('nuevo')">
         <mat-icon class="fa fa-file-alt"></mat-icon>
     </button>
-    <button mat-icon-button aria-label="Guardar">
+    <!--<button mat-icon-button aria-label="Guardar">
         <mat-icon class="fa fa-save"></mat-icon>
-    </button>
+    </button>-->
 </mat-toolbar>
-<span>Panel Editando: {{ editing }}</span>
+<!-- <span>Panel Editando: {{ editing }}</span>-->
 <!-- Registro -->
 <div *ngIf="showRegister" class="dvRegister">
     <app-hemofilia-v19 [id]="id"></app-hemofilia-v19>
 </div>
 <!-- Panel -->
-<div *ngIf="!showRegister"  class="dvPanel">|
+<div *ngIf="!showRegister"  class="dvPanel">
     <!-- <q-grid [rows]="rows$ | async">
         <q-grid-columns generation="deep"></q-grid-columns>
     </q-grid> -->
