@@ -19,7 +19,7 @@
     </q-grid> -->
     <q-grid [columns]="pacColumns" [rows]="rows$ | async">
         <q-grid-columns>
-            <q-grid-column key="registroId" title="" pin="left" [width]="50" [class]="tdMenu">
+            <q-grid-column key="registroId" title="" pin="left" [width]="50" class="tdMenu">
                 <ng-template for="body" let-$cell>
                     <button mat-icon-button [matMenuTriggerFor]="appMenu">
                         <mat-icon>more_vert</mat-icon>
